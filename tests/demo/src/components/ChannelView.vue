@@ -119,6 +119,24 @@ export default {
       this.$_init = true
     },
   },
+
+  apollo: {
+    $subscribe: {
+      document: {
+        query: require('../graphql/messageChanged.gql'),
+        variables () {
+          return {
+            channelId: this.id,
+          }
+        },
+        result (data) {
+          console.log('subscribe document')
+          console.log(data)
+          console.log(data.messageChanged)
+        },
+      },
+    },
+  },
 }
 </script>
 
